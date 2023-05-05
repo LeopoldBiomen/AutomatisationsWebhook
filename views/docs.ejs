@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <title>Documentation Automatisations</title>
+</head>
+<style>
+    *{
+        background: white;
+        color: black;
+        font-family: 'Roboto', sans-serif;
+        padding: 0;
+        margin: 0;
+    }
+
+    h1{
+        font-size: 2em;
+    }
+   
+
+    @media screen and (min-width: 1100px) {
+        #content{
+            width: calc(100% - 22em);
+            margin: 0;
+            height: calc(100vh - 6.4em);
+            overflow-y: auto;
+            padding: 0 2em;
+        }
+        .im{
+                width: 22em;
+                height: 100%;
+                display: flex;
+                flex-flow: wrap row;
+                justify-content: center;
+                align-items: center;
+            }
+        .title{
+            width: calc(100% - 22em);
+            height: 100%;
+            display: flex;
+            flex-flow: wrap row;
+            justify-content: center;
+            align-items: center;
+         
+        }
+
+        header{
+        display: flex;
+        padding: 0.2em 0.2em;
+        flex-flow: wrap row;
+        align-items: center;
+        height: 6em;
+        width: calc(100vw - 0.4em);
+        }
+        header img{
+            width: auto;
+            height: 3em;
+            margin: auto auto;
+            transform: translate(0, -15%);
+        }
+        header h1{
+            
+            word-wrap: break-word;
+        }
+        a{
+            color: rgb(48, 219, 105);
+            text-decoration: none;
+        }
+        #main{
+            display: flex;
+            flex-flow: wrap row;
+        }
+        #summary{
+            height: calc(100vh - 6.4em);
+            width: 18em;
+            background: rgba(49, 49, 49, 1);
+            overflow-y: auto;
+        }
+    }
+
+    @media screen and (max-width: 1100px) {
+        #content{
+            width: calc(100% - 22em);
+            margin: 0;
+            height: calc(100vh - 11em);
+            overflow-y: auto;
+            padding: 0 2em;
+        }
+        .im{
+                width: 18em;
+                height: 100%;
+                display: flex;
+                flex-flow: wrap row;
+                justify-content: center;
+                align-items: center;
+            }
+        .title{
+            width: calc(100% - 22em);
+            height: 100%;
+            display: flex;
+            flex-flow: wrap row;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9em;
+        }
+        header{
+        display: flex;
+        padding: auto auto;
+        flex-flow: wrap row;
+        align-items: center;
+        height: 11em;
+        width: 100%;
+        }
+        header img{
+            width: auto;
+            height: 3em;
+            transform: translate(0, -15%);
+        }
+        header h1{
+            max-width: 15em;
+            width: 15em;
+            word-wrap: break-word;
+            position: relative;
+            right: 1em;
+        }
+        a{
+            color: rgb(48, 219, 105);
+            text-decoration: none;
+        }
+        #main{
+            display: flex;
+            flex-flow: wrap row;
+        }
+        #summary{
+            height: calc(100vh - 11em);
+            width: 18em;
+            background: rgba(49, 49, 49, 1);
+            overflow-y: auto;
+        }
+    }
+
+    #summary ul{
+        margin-top: 3em;
+        background: inherit;
+        display: flex;
+        flex-flow: wrap column;
+    }
+    #summary a{
+        color: lightgray;
+        background: transparent;
+       
+    }
+   
+    .summary.title1{
+        margin: 0.5em 0;
+        font-size: 1.5em;
+        padding-left: 1em;
+    }
+    .summary.title2{
+        padding: 1.5em 0;
+        font-size: 1.25em;
+        padding-left: 2em;
+        color: rgb(185, 185, 185);
+    }
+    .summary.title3{
+        margin: 0.5em 0;
+        font-size: 1em;
+        padding-left: 4em;
+        color: rgb(159, 159, 159);
+    }
+    
+    #content::-webkit-scrollbar {
+        width: 10px;
+    }
+    #content::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 2vh 2vh;
+        background: transparent;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(44, 44, 44);
+        border-radius: 2vh 2vh;
+        
+    }
+
+
+    #summary::-webkit-scrollbar {
+        width: 5px;
+    }
+    #summary::-webkit-scrollbar-track {
+        background: rgba(0,0,0,.87);
+    }
+
+    #summary::-webkit-scrollbar-thumb {
+        border-radius: 2vh 2vh;
+        background: transparent;
+    }
+
+    /* Handle on hover */
+    #summary::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.87);
+        border-radius: 2vh 2vh;
+        
+    }
+
+    .menu.title1{
+        margin-top: 2em;
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .menu.title2{
+        margin-top: 3em;
+        font-size: 1.5em;
+        font-weight: bold;
+        color:rgb(69, 69, 69);
+    }
+
+    .wrapper.title2{
+        margin-top: 1em;
+        margin-left: 1em;
+        color:rgb(109, 109, 109);
+    }
+
+    .menu.title3{
+        font-size: 1.25em;
+        font-weight: bold;
+        color:rgb(142, 142, 142);
+    }
+
+    .wrapper.title3{
+        margin-top: 2em;
+        margin-left: 2em;
+    }
+    .desc{
+        margin-left: 1em;
+    }
+    .list{
+        padding-left: 4em;
+    }
+    .list2{
+        padding-left: 8em;
+    }
+    code{
+        background:rgba(0,0,0,.05);
+        color: black;
+        font-family: Consolas,"courier new";
+    }
+
+    .img{
+        margin-top: 1em;
+        padding-left: 2em;
+        width: 600px;
+        height: auto;
+    }
+    .img::after{
+        content: "\a";
+        white-space: pre; 
+    }
+    .w{
+        background: inherit;
+        margin-top: 1em;
+    }
+    .h{
+        background: inherit;
+    }
+    .c{
+        background: inherit;
+        display: none;
+    }
+    .open{
+        display: block;
+    }
+
+    #summary a:hover{
+        color: darkgreen;
+       
+    }
+    #summary a:focus{
+        color: darkgreen;
+    }
+    *:target{
+        color: darkgreen!important;
+       
+    }
+    .clicked{
+        color: darkgreen!important;
+    }
+
+</style>
+<body>
+    <header>
+        <div class="im">
+            <img src="./leopold-720.png" />
+        </div>
+        <div class="title">
+            <h1>Automatisations de rédaction de fiches e-commerce</h1>
+        </div>
+    </header>
+    <div id="main">
+        <div id="summary">
+            <ul></ul>
+        </div>
+        <div id="content">
+            <p class="menu title1" id="introduction">I. Introduction</p>
+            <div class="wrapper title2">
+                <p class="menu title2" id="rappelDuBesoin">Rappel du besoin</p>
+                <br/>
+                <p class="desc">
+                    Léopold digitalise son activité avec un site e-commerce. Ce site nécessite environ 3000 fiches "produit" pour être attractif. <br>
+                    <strong><i>Comment accélérer la production de fiches "produit" ?</i></strong> 
+                </p>
+           
+            </div>
+            <div class="wrapper title2">
+                <p class="menu title2" id="solution">Solution</p>
+                <br/>
+                <p class="desc">
+                    Le système (aussi désigné comme "automatisations") proposé pour répondre à cette question permet de simplifier et d'automatiser certaines tâches dans le processus de remplissage de fiches "produit".
+                    Ces fiches "produit" au format excel ou Sheets contiennent actuellement 32 champs par produit (les champs avec une astérisque* sont complétés ou  partiellement complétés par le système):<br/>
+                    <br/>
+                    <strong>EAN</strong> :  C'est le genCode du produit;<br/>
+                    <br/>
+                    <strong>Code article</strong> : C'est le code attribué au produit par Videor.<br/>
+                    <br/>
+                    <strong>Code Catégorie</strong> : Ce sont les codes permettant d'indexer un produit dans un des menus du site. <br/>
+                    (cf <a href="https://docs.google.com/spreadsheets/d/13fRKvSGjwQRshWSQiO4nZ8hKEKfJFx42l2nXbtoyhNU/edit?usp=sharing">Code cat</a>) par exemple le code <strong>FRAIS-1</strong> indexe le produit dans le rayon <strong>Rayon frais > Produits de la mer</strong>.<br/>
+                    <br/>
+                    <strong>Code Catégorie Principale</strong> : Idem que pour le Code Catégorie, à la différence qu'il est unique.<br/>
+                    <br/>
+                    <strong>Désignation produit web*</strong> : Il s'agit du titre du produit.<br/>
+                    <br/>
+                    <strong>Unité de mesure*</strong> : Kilogramme(Kg), Litre (L) ou Unit (U).<br/>
+                    <br/>
+                    <strong>Contenance*</strong> : C'est la contenance ou le poids du produit sans le conditionnement exprimée selon Unité de mesure.<br/>
+                    <br/>
+                    <strong>Poids brut</strong> : Contenance du produit emballage compris exprimée en grammes. <br/>
+                    <br/>
+                    <strong>Stock minimum requis*</strong> : Stock en-dessous duquel le produit apparaît comme indisponible sur le site. Initialement à 3, il a été abaissé à 1 pour mieux prendre en compte les nombreux petits stocks.<br/>
+                    <br/>
+                    <strong>Marque*</strong> : Il s'agit de la marque du produit telle qu'elle apparaît sur le conditionnement. (Attention :  Ce n'est pas le fournisseur !).<br/>
+                    <br/>
+                    <strong>Description courte</strong> : Il s'agit d'une description d'une à deux phrases mettant en valeur quelques caractéristiques du produit.<br/>
+                    <br/>
+                    <strong>Description longue*</strong> : Il s'agit d'une description présentant le produit selon une structure variable. Lorsque cela est possible, elle est comme suit :<br/>
+                </p>
+                    <ul class="list">
+                        <li>Phrase d'introduction</li>
+                        <li>Cas d'utilisation</li>
+                        <li>Fabrication</li>
+                        <li>Spécificités (IGP, AOP, etc)</li>
+                        <li> Public adapté</li>
+                        <li>Bienfaits</li>
+                        <li>Description de la marque</li>
+                    </ul>
+                    <br>
+                <p class="desc">
+                    <strong>Ingrédients*</strong> : Chaque ingrédient est séparé du suivant par une virgule et s'il est bio, marqué d'une astérisque. A la fin de cette liste est ajouté <strong>*Issu de l'agriculture biologique</strong>.<br/>
+                    <br/>
+                    <strong>Frais*</strong> : Ce champ prend la valeur non de manière systématique.<br/>
+                    <br/>
+                    <strong>Visuel 1*</strong> : Il s'agit du nom du premier visuel du produit nommé <strong>&#60;EAN&#62;.&#60;extension&#62;</strong><br/>
+                    <br/>
+                    <strong>Visuel 2</strong> : Il s'agit d'un second visuel.<br/>
+                    <br/>
+                    <strong>Étiquette</strong> : Il s'agit d'une liste d'étiquettes qui apparaîtront sur la miniature du produit en haut à gauche. Ce champ accepte une ou plusieurs des valeurs suivantes (toutes en majuscule): <br/>
+                </p>
+                    <ul class="list">
+                        <li>PETIT PRIX</li>
+                        <li>FORMATS ECO</li>
+                        <li>TOP VENTE</li>
+                        <li>COUP DE COEUR</li>
+                        <li>LOCAL</li>
+                    </ul>
+
+                    <br/>
+
+                <p class="desc">
+                    <strong>Caractéristiques prioritaires</strong> : Il s'agit d'une caractéristique qui permettra d'effectuer des recherches par filtre sur le site. Elle peut prendre les valeurs suivantes :<br/>
+                </p>    
+                    <ul class="list">
+                        <li>COMMERCE EQUITABLE</li>
+                        <li>CRU</li>
+                        <li>CRUELTY FREE</li>
+                        <li>FABRIQUE EN FRANCE</li>
+                        <li>LOCAL</li>
+                        <li>SUPER ALIMENT</li>
+                        <li>ADAPTE AUX ENFANTS</li>
+                        <li>SANS HUILE DE PALME</li>
+                        <li>VEGAN</li>
+                        <li>VEGETARIEN</li>
+                        <li>ZERO DECHET</li>
+                        <li>SANS GLUTEN</li>
+                        <li>SANS LACTOSE</li>
+                        <li>SANS SUCRE AJOUTE</li>
+                        <li>SANS SULFITE</li>
+                        <li>SANS SULFATE</li>
+                        <li>REDUIT EN SEL</li>
+                    </ul>
+                    
+                    <br/>
+                <p class="desc">
+                    <strong>Caractéristiques secondaires</strong> : Il s'agit d'une liste de caractéristiques. (liste ci-dessus)<br/>
+                    <br/>
+                    <strong>Conseil de préparation</strong><br/>
+                    <br/>
+                    <strong>Coup de coeur de l'équipe</strong><br/>
+                    <br/>
+                    <strong>Quantité nutritionnelle*</strong> : Il s'agit de la quantité de référence pour laquelle les valeurs nutritionnelles sont données. Ce champ prend systématiquement la valeur <strong>100gr</strong>.<br/>
+                    <br/>
+                    <strong>Energie Kj/Kcal*</strong> : La valeur de champ suit la forme <strong>&#60;Kj&#62;Kj/&#60;Kcal&#62;Kcal</strong>.<br/>
+                    <br/>
+                    <strong>Matières grasses*</strong> : La valeur de champ prend la forme <strong>&#60;valeur&#62;g</strong>.<br/>
+                    <br/>
+                    <strong>Dont acides gras saturés*</strong> : La valeur de champ prend la forme <strong>&#60;valeur&#62;g</strong>.<br>
+                    <br/>
+                    <strong>Glucides*</strong> : La valeur de champ prend la forme <strong>&#60;valeur&#62;g</strong>.<br/>
+                    <br/>
+                    <strong>Dont sucres*</strong> : La valeur de champ prend la forme <strong>&#60;valeur&#62;g</strong>.<br/>
+                    <br/>
+                    <strong>Fibres*</strong> : La valeur de champ prend la forme <strong>&#60;valeur&#62;g</strong>.<br/>
+                    <br/>
+                    <strong>Protéines*</strong> : La valeur de champ prend la forme <strong>&#60;valeur&#62;g</strong>.<br/>
+                    <br/>
+                    <strong>Sel*</strong> : La valeur de champ prend la forme <strong>&#60;valeur&#62;g</strong>.<br/>
+                    
+                    
+                </p>
+               </div>
+               <p class="menu title1" id="usage"> II. Usage</p>
+               <p class="desc" style="margin-top: 1em">
+                    Dans cette section, l'usage des automatisations sera détaillée du point de vue de l'utilisateur. <br>
+                    Pour commencer, rendez-vous sur ce <a href="https://docs.google.com/spreadsheets/d/13fRKvSGjwQRshWSQiO4nZ8hKEKfJFx42l2nXbtoyhNU/edit?usp=sharing">document</a>. <br>
+                    Créez une nouvelle feuille et remplissez-la avec vos informations de base (tirées de Videor). <br>
+                    Vous aurez accès un menu nommé automation. <br>
+                </p>
+                <img src="./intro.png" class="img"/>
+                <br>
+                <div class="wrapper title2">
+                    <p class="menu title2" id="serveur">Serveur</p>
+                    <br/>
+                    <p class="desc">
+                        Cette fonctionnalité permet de changer l'url du serveur qui supporte les automatisations. Il peut être distant ou local.
+                    </p>
+                    <img src="./serveur.png" class="img" />
+                    <br>
+                </div>
+                <div class="wrapper title2">
+                    <p class="menu title2" id="catalogue.bio" alt="">Catalogue.bio</p>
+                    <br/>
+                    <p class="desc">
+                        Cette fonctionnalité permet de récupérer toutes les informations correspondantes aux EANs présents dans la feuille sur le site <a href="https://catalogue.bio">Catalogue.bio</a> . <br>
+
+                        Ces informations sont écrites dans les cellules correspondantes : 
+                    </p>
+                        <ul class="list">
+                            <li>Désignation produit web.</li>
+                            <li>Unité de mesure.</li>
+                            <li>Contenance.</li>
+                            <li>Ingrédients.</li>
+                            <li>Frais.</li>
+                            <li>Quantité nutritionnelle.</li>
+                            <li>Energie Kj/Kcal.</li>
+                            <li>Matières grasses</li>
+                            <li>Dont acides gras saturés.</li>
+                            <li>Dont acides gras saturés.</li>
+                            <li>Glucides.</li>
+                            <li>Dont sucres.</li>
+                            <li>Fibres.</li>
+                            <li>Protéines.</li>
+                            <li>Sel.</li>
+                        </ul>
+                        <br/>
+                    <p clas="list">
+                        Vous devez pour commencer fournir un nom de collection qui a le moins de probabilité d'avoir été utilisé précédemment. <br>
+                        Utilisez des majuscules et des underscores ( _ ). <br>
+                        Puis appuyez sur <strong><i>rechercher</i></strong>. <br>
+                        <br/>
+                        <img src="catalogue.bio.png" class="img" alt="Catalogue.bio"/>
+                        <br>
+                        Les données récupérées écraseront celles qui sont déjà présentes. <br>
+                    </p>
+                    
+            
+                </div>
+                <div class="wrapper title2">
+                    <p class="menu title2" id="openfoodfacts">Openfoodfacts</p>
+                    <br/>
+                    <p class="desc">
+                        Souvent les informations fournies pour les valeurs nutritionnelles et les ingrédients par catalogue.bio sont parcellaires. Elles sont donc complétées grâce à cette automatisation. <br>
+                        Il vous suffit de cliquer sur <strong><i>Compléter les infos</i></strong>. <br>
+                    </p>
+                        <img src="./open.png" class="img" />
+                        <br>
+                    <p class="desc">
+                        Le processus d'écriture de ces données préservera celles qui sont déjà présentes. <br>
+                    </p>
+            
+                </div>
+                <div class="wrapper title2">
+                    <p class="menu title2" id="recherchesDimages">Recherche d'images</p>
+                    <br/>
+                    <p class="desc">
+                        Cette automatisation permet de récupérer des images correspondant aux EANs présents dans la feuille. <br>
+                        Il y en a 10 par EAN.<br/>
+                        Pour commencer, entrez l'index de départ (rangée de départ - 1 soit ici 1 - 1 = 0) puis appuyez sur <strong>
+                            <i>Entrée</i></strong>.
+                            <br>
+                        Par exemple, si vous voulez récupérer les images à partir de la rangée 28, entrez 27. <br>
+                        Pour choisir une image, cliquer dessus, elle sera téléchargée et son nom sera ajouté au champ <strong><i>Visuel 1</i></strong>. <br>
+                        
+                        <img src="./recherches-images.png" class="img"/>
+                        <br>
+                        
+
+                        Les images encadrées de orange sont les images récupérées sur Openfoodfacts.org. Les autres sont récupérées depuis Google images. <br>
+                    </p>
+                </div>
+                <div class="wrapper title2">
+                        <p class="menu title2" id="descriptionsLongues">Desriptions longues</p>
+                        <br/>
+                        <p class="desc">
+                            Cette automatisation permet de générer une description longue grâce à ChatGPT. <br>
+                        </p>
+                
+                    </div>
+                    <div class="wrapper title3">
+                        <p class="menu title3" id="prompt">Le prompt</p>
+                        <br/>
+                        <p class="desc">
+                            Le prompt désigne le texte soumis à une IA de type LLM (Large Language Model). <br>
+                            Plus il est précis et plus l'IA est susceptible de produire une réponse satisfaisante. <br>
+                            Le prompt pour cette automatisation est donc construit comme suit : <br>
+                        </p>
+                        <img src="./schéma.png" class="img">
+                        <br>
+                
+                    </div>
+                    <div class="wrapper title3">
+                        <p class="menu title3" id="template">Le template</p>
+                        <br/>
+                        <p class="desc">
+                            Le prompt final soumis à ChatGPT est assemblé selon un système de template. <br>
+                            Nous appelerons variable un mot qui sera remplacé par du texte. <br>
+                            Nous appelerons champ calculé un champ qui est capable de remplacer une variable par le texte correspondant. <br>
+                            Une variable est insérée dans un champ calculé sous la forme <strong>[VARIABLE]</strong>. <br> Si vous avez besoin d'utiliser plusieurs mots, séparez les par des underscores ( _ ). <br>
+                            Tous les champs sont calculés excepté les champs <strong>Désignation web</strong>, <strong>Ingrédients</strong>, <strong>Caractéristiques</strong>, <strong>Marque</strong> et <strong>Prompt</strong>. <br>
+                            Quatre variables par défauts sont disponibles : <br>
+                        </p>
+                        <ul class="list">
+                            <li>MARQUE</li>
+                            <li>DESIGNATION</li>
+                            <li>INGREDIENTS</li>
+                            <li>CARACTERISTIQUES</li>
+                        </ul>
+                        <br>
+                        <p class="desc">
+
+                            Vous pouvez créer d'autres variables en appuyant sur  <strong>+</strong> à côté de <strong>Ajouter un champ</strong>. <br>
+                            Vous pouvez sauvegarder un champ en cliquant sur le bouton <strong><i>sauvegarder</i></strong> en-dessous du dit-champ. <br>
+                            Vous pouvez également le supprimer en cliquant sur <strong><i>supprimer</i></strong>. <br>
+                            <br>
+                            Exemple d'utilisation : <br>
+                            <br>
+                            Une fois que vous êtes satisfait du <strong><i>Prompt</i></strong>, vous pouvez le soumettre à ChatGPT en cliquant sur envoyer. <br>
+                        </p>
+                        <br>
+                        <img src="./desc_lon.gif" class="img">
+                        <br>
+                
+                    </div>
+                    <div class="wrapper title3">
+                        <p class="menu title3" id="enrichissementWeb">Enrichissement web</p>
+                        <br/>
+                        <p class="desc">
+                            Une des problématiques que posent les IA comme ChatGPT est qu'elles inventent parfois des informations. <br>
+                            Ici ce problème est résolu grâce à l'enrichissement web. <br>
+                            L'enrichissement web intervient sur une partie de la schéma (si vous faites une recherche sur un élément qui n'est pas présent dans la "structure", il risque de ne pas être pris en compte). <br>
+                            Imaginons que vous souhaitiez enrichir le prompt pour l'<strong><i>utilisation</i></strong> de <i style="color: rgb(200,100,0)">caramels</i> . <br>
+                            Vous entreriez <strong><i>utilisation</i></strong>  comme caractéristique dans le premier champ, appuyeriez sur Entrée puis entreriez à nouveau <strong><i>Comment sont consommés les caramels ?</i></strong> dans le second champ de ma nouvelle ligne. <br>
+                            <br>
+                            La question sera recherchée sur Google. <br>
+
+                            La méta-description mise en avant par Google et les questions réponses seront automatiquement ajoutées au prompt au niveau des informations du produit. <br>
+                            <br>
+                            Il est possible d'enrichir le prompt avec plusieurs requêtes web. <br>
+                            Il faut juste s'assurer que les caractéristiques entrées soient bien <strong><i>différentes</i></strong>. <br>
+                        </p>
+                        <br>
+                        <img src="./web.gif" clas="img" alt="web">
+                
+                    </div>
+                    <div class="wrapper title3">
+                        <p class="menu title3" id="validation">Validation</p>
+                        <br/>
+                        <p class="desc">
+                            Une fois tous ces éléments sont pris en compte vous pouvez cliquer sur <strong><i>envoyer</i></strong>. <br>
+                            La réponse se retrouvera dans le dernier champ : <strong><i>Description longue</i></strong>. <br>
+                            Il est possible de relire et modifier le contenu avant de le placer dans le champ <strong><i>Description longue</i></strong> de la feuille Google Sheet en appuyant sur <strong><i>valider</i></strong>. <br>
+                        </p>
+                        
+                
+                    </div>
+            
+                
+                    <p class="menu title1" id="fonctionnement"> III. Fonctionnement</p>
+                    <div class="wrapper title2">
+                        <p class="menu title2" id="architectureGlobale">Architecture globale</p>
+                        <br/>
+                        <p class="desc">
+                            La solution exploite l'environnement proposé par Google et ses multiples services : notamment <strong><i>Sheets</i></strong> et <strong><i>Drive</i></strong>. <br>
+                            Apps Script, un langage de programmation inventé par Google est une copie du javascript adapté à l'environnement. Ce langage permet dans <strong><i>Sheets</i></strong> d'ajouter aisément de nouvelles fonctionnalités et d'enrichir l'UI. <br>
+                            <strong><i>Drive</i></strong> permet de stocker les informations qui doivent être persistantes. <br>
+                            <br>
+                            Le serveur <strong><i>Node.js</i></strong> permet de manipuler le navigateur chromium afin d'accéder aux informations en lignes. <br>
+                        </p>
+                        <img src="./arch.png" class="img" style="width: 300px">
+                    </div>
+                    <div class="wrapper title2">
+                        <p class="menu title2" id="catalogue.bio_">Catalogue.bio</p>
+                        <br/>
+                        <p class="desc">
+                            Les EANS sont récupérés dans feuille active puis ils sont envoyés au serveur. <br>
+                            Le serveur les met au format .xlsx puis les soumet au site <strong><i>catalogue.bio</i></strong>. <br>
+                            Il récupère ensuite les informations téléchargées depuis ce site et les téléverse sur le <strong><i>Drive</i></strong> du compte Google principal. <br>
+                            Un fois fait, Google Sheet <strong><i>ouvre</i></strong> ce document, en extrait les informations et <strong><i>remplit</i></strong> la feuille active avec ces dernières. <br>
+                        </p>
+                        <br>
+                        <img src="./catalogue.bio_.png" class="img">
+                
+                    </div>
+                    <div class="wrapper title2">
+                        <p class="menu title2" id="openfoodfacts_">Openfoodfacts</p>
+                        <br/>
+                        <p class="desc">
+                            Les EANS sont récupérés dans feuille active puis ils sont envoyés au serveur. <br>
+                            Pour chacun d'entre eux, le serveur requête le site openfoodfacts.org pour en extraire les ingrédients, le nom et la marque. <br>
+                            Il les retourne ensuite à <strong><i>Sheets</i></strong> qui remplira les cellules concernées <strong><i>si et seulement si</i></strong> elles sont vides.
+                        </p>
+                        <br>
+                        <img src="./opf.png" class="img">
+                    </div>
+                    <div class="wrapper title2">
+                        <p class="menu title2" id="recherchedImages_">Recherches d'images</p>
+                        <br/>
+                        <p class="desc">
+                            Les EANS sont récupérés dans feuille active puis ils sont envoyés au serveur. <br>
+                            Pour chacun d'entre eux, le serveur va chercher l'image du produit correspondant sur openfoodfacts.org, puis 10 images sur Google images à partir de L'EAN. <br>
+                            Il retourne la liste d'images au format base64 à Google Sheet. <br>
+                        </p>
+                        <br>
+                        <img src="./recherchesImages_.png" class="img">
+                    </div>
+                    <div class="wrapper title2">
+                        <p class="menu title2" id="descriptionsLongues">Descriptions Longues</p>
+                        <br/>
+                        <p class="desc">
+                            Le prompt est envoyé au serveur. <br>
+                            Ce dernier effectuera des requêtes Google. Il récupérera la <strong><i>méta-description</i></strong> ainsi que les <strong><i>questions/réponses</i></strong>. <br>
+                            Ces informations seront ajoutées au prompt dans la section <strong><i>"Produit"</i></strong>, c'est pourquoi il est important de <strong><i>ne pas retirer les accolades</i></strong>. <br>
+                            Le prompt est enfin soumis au model gpt-turbo-3.5 de l'API de OpenAI et la réponse et renvoyé à <strong><i>Sheets</i></strong>.
+                        </p>
+                        <br>
+                        <img src="./description.png" class="img">
+                    </div>
+
+                <p class="menu title1" id="installationAaZ">IV. Installation de A à Z</p>
+                <div class="wrapper title2">
+                    <p class="menu title2" id="comptesEtServices">Comptes et services</p>
+                    <br/>
+                    <div class="desc">
+                        Vous avez besoin de plusieurs services pour commencer votre installation : <br>
+                        <br>
+                    
+                        <ul class="list">
+                            <li><strong>Un compte <a href="https://www.catalogue.bio/">Catalogue.bio</a></strong></li>
+                            <br>
+                            <p class="desc">Léopold en possède déjà un.</p>
+                            <br>
+                            <li><strong>Un compte <a href="https://accounts.google.com/InteractiveLogin/identifier?elo=1&ifkv=Af_xneFhigDzvhBbxNgHbx_k-ErDK7wpf1OQxz2J6X2R_QmvHRfTYhFegMcRKeKCGa9_8a8x8XFkwQ&flowName=GlifWebSignIn&flowEntry=ServiceLogin">Google</a></strong></li>
+                            <br>
+                            <p class="desc">
+                                Créez une copie de ce <a href="https://docs.google.com/spreadsheets/d/13fRKvSGjwQRshWSQiO4nZ8hKEKfJFx42l2nXbtoyhNU/edit?usp=sharing">document</a> pour votre compte, ce sera votre document de travail. <br/>
+                                Créez un fichier Google Docs dans lequel vous écrirez ceci :<br/>
+                            </p>
+                            <code>
+                                {"users":[ ]}
+                            </code>
+                                <br/>
+                            <p class="desc">
+                                <br/>
+                                Ce fichier est destiné à stocker l'ensemble des utilisateurs avec leurs fichiers respectifs.<br/>
+                                Il vous faudra conserver l'identifiant du fichier trouvable dans l'url (nous y ferons référence plus plus tard comme USERS_FILE_LIST
+                                ) :<br/>
+
+                            </p>
+                            <img src="./url.png" class="img">
+                            <p class="desc">
+                                <br/>
+
+                                Rendez-vous sur <a href="https://drive.google.com/">Google Drive</a>. Vous devrez créer un dossier que vous nommerez comme bon vous semble. <br>
+                                Il servira à sauvegarder les dossiers et les fichiers de tous les utilisateurs. <br>
+                                Rendez-vous sur votre document de travail. Cliquez sur <strong><i>Extensions</i></strong> puis sur <strong><i>Apps Script</i></strong>. <br>
+                                Un nouvel onglet présentant plusieurs fichiers sur la gauche et des lignes de code sur la droite devrait s'ouvrir. <br>
+                                Placez-vous dans le fichier <strong><i>code.gs</i></strong> et remplacez la valeur de la variable <strong><i>ID_COMMON</i></strong> par l'identifiant de votre nouveau dossier. <br>
+                                Mettez l'identifiant du dossier de côté. Nous y ferons référence plus tard comme <strong><i>COMMON_FOLDER</i></strong><br/>
+                                <img src="./url_.png" class="img" />
+                                <br/>
+                                Pensez à partager ce dossier avec le compte de service <strong><i>Google Cloud</i></strong>.<br/>
+
+                                
+                            </p>
+                            <br>
+                            <li><strong>Un compte de service <a href="https://console.cloud.google.com/">Google Cloud</a></strong></li>
+                            <br>
+                            <p class="desc">
+                                Avec votre compte google rendez-vous sur <strong><i>Google Cloud</i></strong>. <br>
+                                Dans <strong><i>APIs & Services</i></strong>, cliquez sur <strong><i>Enabled APIs & Services</i></strong>. <br>
+                                Vous obtiendrez la liste des services <strong><i>Google</i></strong>. Il faudra activer ("enable") les services <strong><i>Google Docs API</i></strong> et <strong><i>Google Drive API</i></strong>.
+                                Vous devrez ensuite vous créer un compte service. <br>
+                                Pour cela, rendez-vous dans la section <strong><i>Credentials</i></strong> du menu principal puis cliquez sur <strong><i>Create credentials</i></strong> (en haut) puis <strong><i>Service Account</i></strong>.
+                                Choisissez le nom que vous souhaitez et donner lui le rôle d'<strong><i>owner</i></strong>.
+                                Téléchargez vos identifiants au format .json et conservez-les pour plus tard.
+                            </p>
+                            <br>
+                            <li><strong>Un compte <a hrf="https://github.com/">Github</a></strong></li>
+                            <br>
+                            <p class="desc">
+                                Vous devriez normalement connaître les identifiants du compte sur lequel est versionné le projet. <br>
+                                Il vous faudra vous rendre dans les <strong><i>Paramètres</i></strong>, puis <strong><i>Accès</i></strong> puis <strong><i>SSH key</i></strong>
+                            </p>
+                            <br>
+                            <li><strong>Un compte <a href="https://platform.openai.com">Openai</a></strong></li>
+                            <br>
+                            <p class="desc">
+                                Créez un nouveau token sur la page <strong><a href="https://platform.openai.com/account/api-keys">API keys</a></strong> puis sauvegardez-le pour plus tard. <br>
+
+                            </p>
+                            <br>
+                            <li><strong>Un compte sur chez l'hébergeur de votre choix</strong></li>
+                            <br>
+                            <p class="desc">
+                                Attention : Vous aurez besoin d'avoir un accès un SSH et que le serveur supporte l'ouverture d'un navigateur en mode headLess. <br>
+                                <br>
+                                Nous sommes maintenant prêt ! <br>
+
+                            </p>
+                            <br>
+                        </ul>
+
+                    
+                    </div>
+            
+                </div>
+                <div class="wrapper title2">
+                    <p class="menu title2" id="miseEnProduction">Mise en Production</p>
+                    <br/>
+                    <div class="desc">
+                        Il y a deux éléments à installer : <br>
+                        <ul class="list"> <br>
+                            <li>Le webhook.</li> <br>
+                            <li>Les automatisations.</li> 
+                        </ul>
+                        <br>
+                        Connectez-vous à votre serveur via le ssh.
+                        Créez un dossier dans lequel vous placerez ces deux éléments, nous l'appellerons <strong><i>Léopold</i></strong>. <br>
+                        Entrez à l'intérieur…
+
+                        <br>
+
+                        <div class="wrapper title3">
+                            <p class="menu title3" id="webhook">Le webhook</p>
+                            <br/>
+                            <div class="desc">
+                                Commençons par le webhook. <br>
+                                Clonez le repository qui contient le webhook avec la commande <code>git clone &#60;repo&#62;</code>. <br>
+                                Rentrez dans le dossier téléchargé. <br>
+                                Ajoutez le fichier contenant les informations d'authentification du compte de service Google cloud. <br>
+                                Nommez-le <strong><i>serviceAccountCredentials.json</i></strong>. <br>
+                                Créez un nouveau fichier nommé <strong><i>.env</i></strong> et écrivez-y : <br>
+                                <br>
+                                
+                                <code>
+                                    USERS_FILE_LIST=IDduUserFile <br>
+                                    COMMON_FOLDER=IDduCOMMONFolder <br>
+                                    ENV=SecretOfYourWebhook <br>
+                                </code>
+                                <br>
+
+                                Pensez à remplacer les valeurs dans le texte ci-dessus par celles que vous avez obtenues dans la partie <strong><i><a href="#comptesEtServices">Comptes et services</a></i></strong>. <br>
+                                <br>
+                                Sortez de ce dossier (contenant le webhook). <br>
+                                Créer un dernier fichier nommé <strong><i>launch.sh</i></strong> et placez-y : <br>
+                                <br>
+                                <code>
+                                cd ../LéopoldAutomatisations <br>
+                                pm2 stop API.js <br>
+                                git reset --hard HEAD <br>
+                                git pull <br>
+                                npm install <br>
+                                npx playwright install <br>
+                                npx playwright install-deps <br>
+                                cp ../.env  . <br>
+                                cp ../serviceAccountCredentials.json . <br>
+                                pm2 start API.js <br>
+                                pm2 save <br>
+                                </code>
+                                <br>
+                                Si l'environnement Nodejs n'est pas présent, installez-le : <br>
+                                <br>
+                                <code>
+                                    sudo apt install nodejs <br>
+                                    curl -L https://npmjs.org/install.sh | sudo sh <br>
+                                </code>
+                                <br>
+                                Si le service pm2 n'est pas présent, installez-le : <code>npm install pm2@latest -g</code> <br>
+                                <br>
+                                Enfin, créer un fichier nommé webhookLaunch.sh et placez-y : <br>
+                                <br>
+                                <code>
+                                    cd LéopoldWebhook <br>
+                                    git reset --hard HEAD <br>
+                                    git pull <br>
+                                    cp ../.env . <br>
+                                    cp ../serviceAccountCredentials.json . <br>
+                                    pm2 delete index.js <br>
+                                    npm install <br>
+                                    pm2 start index.js <br>
+                                    pm2 save <br>
+                                </code>
+                                <br>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="wrapper title3">
+                            <p class="menu title3" id="automatisations">Les automatisations</p>
+                            <br/>
+                            <div class="desc">
+                                Placez-vous dans le dossier <strong><i>Léopold</i></strong> que vous avez créé au début de cette partie. <br>
+                                Téléchargez le repository contenant les automatisations. <br>
+                                Entrez dedans puis créez un fichier <strong><i>.env</i></strong> : <br>
+                                <br>
+                                <code>
+                                    ID=identifiantDuCompteCatalogue.bio <br>
+                                    PSWD=motDePasseDuCompteCatalogue.bio <br>
+                                    OPENAI_API_KEY=tokenGénéréParOpenAICommençantParSk <br>
+                                    type=authorized_user <br>
+                                    PROD=true <br>
+                                    PORT=8000 <br>
+                                    FOLDER_ID=1OBuMx-Ne9Ewuvzy-gIIMj9ZYGJixiQGD <br>
+                                    USERS_FILE_LIST=13akfxQFaXLjmx3lXvhIkyqszmggb6sZUZ2cx1q3Bqk9Hc <br>
+                                </code>
+                                <br>
+                                
+                                <strong><i>PROD</i></strong> prend la valeur <strong><i>false</i></strong> en local et <strong><i>true</i></strong> en production. <br>
+                                <br>
+                                <strong><i>FOLDER_ID</i></strong> ne nous intéresse pas ici. Vous pouvez lui assigner une valeur quelconque. <br>
+                                <br>
+                                <strong><i>USERS_FILE_LIST</i></strong> est égal à l'id du <strong><i>USER_FILE_LIST</i></strong> que vous avez mis de côté plus tôt.  <br>
+                                <br>
+
+                                Enfin ajoutez le fichier authentification du compte de service Google cloud et renommez le <strong><i>serviceAccountCredentials.json</i></strong>. <br>
+                                <br>
+                                    
+                                Il ne vous reste plus qu'à exécuter les fichiers <strong><i>webhookLaunch.sh</i></strong> et <strong><i>setup.sh</i></strong>. <br>
+                                <br>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="wrapper title3">
+                            <p class="menu title3" id="enLocal">... en local</p>
+                            <br/>
+                            <div class="desc">
+                                <strong><i>Si et seulement si</i></strong> vous avez déjà mis en place les automatisations sur un serveur et qu'en les utilisant vous avez rencontré des latences inhabituelles dûes au nombre d'utilisateurs (>3 simultanés). <br>
+                                 Vous pouvez recourir à une installation en local. <br>
+                                <br>
+                                Clonez le repo contenant les automatisations sur votre machine. <br>
+                                Entrez dans le nouveau dossier et ajoutez le fichier d'authentification du compte de service qui est associé au compte Google que vous utilisez sur Google Sheet. <br>
+                                Créez un fichier <strong><i>.env</i></strong> et placez-y : <br>
+                                <br>
+                                <code>
+                                    ID=identifiantDuCompteCatalogue.bio <br>
+                                    PSWD=motDePasseDuCompteCatalogue.bio <br>
+                                    OPENAI_API_KEY=tokenGénéréParOpenAICommençantParSk <br>
+                                    type=authorized_user <br>
+                                    PROD=false <br>
+                                    PORT=8000 <br>
+                                    FOLDER_ID=1OBuMx-Ne9Ewuvzy-gIIMj9ZYGJixiQGD <br>
+                                    USERS_FILE_LIST=13akfxQFaXLjmx3lXvhIkyqszmggb6sZUZ2cx1q3Bqk9Hc <br>
+                                </code>
+                                <br>
+                                Cette fois-ci le <strong><i>FOLDER_ID</i></strong> est important, c'est l'id Google Drive d'un nouveau dossier (nommons le <strong><i>CATALOGUE_BIO</i></strong>). <br>
+
+                                <br>
+
+                                Vous avez réussi l'installation des automatisations : <br>
+                                <br>
+                                Vous pouvez maintenant vous rendre sur <a href="#">&#60;votre-server&#62;:4000/register</a> pour ajouter votre adresse mail. <br>
+                                <br>
+                                Vous êtes maintenant inscrit et pouvez utilisez les automatisations. <br>
+                                <br>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="wrapper title3">
+                            <p class="menu title3" id="enLocal">Ajout d'un nouvel utilisateur</p>
+                            <br/>
+                            <div class="desc">
+                                Partagez votre document de travail avec l'adresse Gmail que vous souhaitez ajouter. <br>
+                                Vous pouvez ensuite vous rendre sur <a href="#">&#60;votre-server&#62;:4000/register</a> pour ajouter votre adresse mail. <br>
+                                C'est fini, l'utilisateur est ajouté ! <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+           
+            </div>
+        </div>
+        </div>
+    </div>
+    <script>
+        let titles = document.querySelectorAll(".menu.title1, .menu.title2");
+        {
+            let index=0;
+            [...titles].map(e=>{
+                if(e.classList.contains("title1")){
+                    index=1;
+                }else{
+                    e.textContent = index+". "+e.textContent;
+                    index+=1;
+                }
+
+            })
+           
+        }
+        let abc = "abcdefghij";
+        titles = document.querySelectorAll(".menu.title2, .menu.title3");
+        {
+            let index=0;
+            [...titles].map(e=>{
+                if(e.classList.contains("title2")){
+                    index=0;
+                }else{
+                    e.textContent = abc[index]+". "+e.textContent;
+                    index+=1;
+                }
+
+            })
+           
+        }
+
+        let summary = document.querySelector("#summary ul");
+        let content = document.querySelector("#content");
+
+        function recreateSummary(){
+            let m = [...document.querySelectorAll(".menu")];
+            let index = 1;
+           let w = document.createElement("div");
+           w.className = "w";
+           
+
+            function setMenu(root, w, h, c, arr){
+                console.log("length ", arr.length);
+              
+                let el = arr[0];
+
+                h.addEventListener("click", e=>{
+                    console.log(e.target)
+                    if(e.target.parentNode.querySelector(".c")) e.target.parentNode.querySelector(".c").classList.toggle("open");
+                });
+                
+                let index = parseInt(el.className[el.className.length-1]);
+                let a = document.createElement("a");
+                a.href = "#"+el.id;
+                a.textContent = el.textContent;
+                a.className = "summary "+el.className.replace(/menu\s/g, "");
+                h.appendChild(a);
+                
+                w.appendChild(h);
+                w.appendChild(c);
+                root.appendChild(w)
+
+                if(arr.length>1){
+                    let next = arr[1];
+                    let newIndex = parseInt(next.className[next.className.length-1]);
+                    if(newIndex > index){
+                        arr.shift();
+                        w = c;
+                        h = document.createElement("div");
+                        
+                        h.className="h";
+                        c = document.createElement("div");
+                        c.className = "c";
+                        let t= w;
+                        w = document.createElement("div");
+                        w.className="w";
+                        return setMenu(t, w, h, c, arr);
+                    }else{
+                        arr.shift();
+                        w = document.createElement("div");
+                        w.className = "w";
+                        
+                        h = document.createElement("div");
+
+                        h.className = "h";
+                        c = document.createElement("div");
+                        c.className = "c";
+                        switch(index - newIndex){
+                            case 0:
+                                return setMenu(root, w, h, c, arr); 
+                                break;
+                            case 1:
+                                return setMenu(root.parentNode.parentNode, w, h, c, arr); 
+                                break;
+                            case 2:
+                            return setMenu(root.parentNode.parentNode.parentNode.parentNode, w, h, c, arr); 
+                                break;
+                            }
+                        
+                    }
+                }else{
+                    return;
+                }
+                
+                
+            }
+            let h = document.createElement("div");
+            h.className = "h";
+            let c = document.createElement("div");
+            c.className = "c";
+            setMenu(summary,w, h, c, m);
+        }
+
+        recreateSummary();
+       let as = document.querySelectorAll("a");
+       [...as].map(e=>{
+        e.addEventListener("click", ee=>{
+            [...as].map(a=>{
+                if(a.classList.contains("clicked")){
+                    a.classList.remove("clicked");
+                }
+            });
+            if(!ee.target.classList.contains("clicked")){
+                    ee.target.classList.add("clicked");
+            }
+        })
+       })
+    </script>
+</body>
+</html>

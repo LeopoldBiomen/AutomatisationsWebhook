@@ -1,0 +1,5 @@
+.env
+w.js
+worker.js
+node_modules
+serviceAccountCredentials.json
